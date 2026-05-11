@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Generator | India VIP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .form-section { background: #111111; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1rem; border: 1px solid #333; }
+    .form-label { display: block; margin-bottom: 0.5rem; color: #ffb6c1; font-weight: 500; }
+    .form-input, .form-textarea { width: 100%; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid #444; background: #0a0a0a; color: white; }
+    .form-input:focus, .form-textarea:focus { outline: 2px solid #ff1493; border-color: #ff1493; }
+    .generate-btn { background: linear-gradient(135deg, #ff1493, #ff69b4); color: white; padding: 1rem 2rem; border-radius: 0.75rem; font-weight: bold; font-size: 1.125rem; cursor: pointer; transition: all 0.3s; width: 100%; }
+    .generate-btn:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(255,20,147,0.5); }
+    .preview-section { background: #111111; border-radius: 1rem; padding: 1.5rem; margin-top: 1.5rem; border: 1px solid #333; }
+    textarea { resize: vertical; min-height: 80px; }
+  </style>
+</head>
+<body class="bg-[#0a0a0a] text-white">
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-[#111111] border-b-2 border-pink-600 shadow-xl">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between items-center py-3">
+        <div class="flex items-center gap-2">
+          <a href="index.html" class="text-2xl font-bold">
+            <span class="text-pink-500">INDIA</span><span class="text-yellow-400">VIP</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="index.html" class="text-gray-300 hover:text-pink-400 font-semibold">Home</a>
+          <a href="models.html" class="text-gray-300 hover:text-pink-400 font-semibold">Models</a>
+          <a href="cities.html" class="text-gray-300 hover:text-pink-400 font-semibold">Cities</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <section class="py-8 px-4 bg-gradient-to-r from-pink-900 to-pink-800">
+    <div class="max-w-5xl mx-auto text-center">
+      <h1 class="text-4xl font-bold mb-3"><i class="fas fa-magic mr-3"></i>Profile Generator</h1>
+      <p class="text-pink-200 text-lg">Bas details daalo aur ek click mein naya profile generate karo!</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-10 px-4">
+    <div class="max-w-5xl mx-auto">
+      <form id="profileForm">
+        <!-- Basic Info -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-pink-400 mb-4 flex items-center gap-2"><i class="fas fa-user"></i> Basic Information</h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="form-label">Full Name *</label>
+              <input type="text" id="name" class="form-input" placeholder="e.g. Meera Joshi" required>
+            </div>
+            <div>
+              <label class="form-label">File Name (without .html) *</label>
+              <input type="text" id="filename" class="form-input" placeholder="e.g. meera" required>
+            </div>
+            <div>
+              <label class="form-label">City *</label>
+              <input type="text" id="city" class="form-input" placeholder="e.g. Chennai" required>
+            </div>
+            <div>
+              <label class="form-label">Age *</label>
+              <input type="number" id="age" class="form-input" placeholder="e.g. 30" required>
+            </div>
+            <div>
+              <label class="form-label">Height</label>
+              <input type="text" id="height" class="form-input" placeholder="e.g. 5'6&quot;">
+            </div>
+            <div>
+              <label class="form-label">Weight</label>
+              <input type="text" id="weight" class="form-input" placeholder="e.g. 55 kg">
+            </div>
+            <div>
+              <label class="form-label">Category *</label>
+              <select id="category" class="form-input" required>
+                <option value="College Girl">College Girl</option>
+                <option value="Housewife">Housewife</option>
+                <option value="Russian">Russian</option>
+                <option value="VIP Model">VIP Model</option>
+                <option value="Air Hostess">Air Hostess</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Languages</label>
+              <input type="text" id="languages" class="form-input" placeholder="e.g. Hindi, English, Tamil">
+            </div>
+          </div>
+        </div>
+
+        <!-- Status & Badges -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-pink-400 mb-4 flex items-center gap-2"><i class="fas fa-badge-check"></i> Status & Badges</h2>
+          <div class="grid md:grid-cols-3 gap-4">
+            <div>
+              <label class="form-label flex items-center gap-2"><input type="checkbox" id="isAvailable" checked> Available Now?</label>
+            </div>
+            <div>
+              <label class="form-label flex items-center gap-2"><input type="checkbox" id="isHot"> HOT Badge?</label>
+            </div>
+            <div>
+              <label class="form-label flex items-center gap-2"><input type="checkbox" id="isNew"> NEW Badge?</label>
+            </div>
+            <div>
+              <label class="form-label flex items-center gap-2"><input type="checkbox" id="isVIP"> VIP Badge?</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-pink-400 mb-4 flex items-center gap-2"><i class="fas fa-tags"></i> Pricing (in ₹)</h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div><label class="form-label">1 Hour</label><input type="text" id="price1" class="form-input" placeholder="e.g. 10000"></div>
+            <div><label class="form-label">2 Hours</label><input type="text" id="price2" class="form-input" placeholder="e.g. 15000"></div>
+            <div><label class="form-label">Night (8 hrs)</label><input type="text" id="priceNight" class="form-input" placeholder="e.g. 30000"></div>
+            <div><label class="form-label">Overnight</label><input type="text" id="priceOvernight" class="form-input" placeholder="e.g. 35000"></div>
+          </div>
+        </div>
+
+        <!-- About Me -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-pink-400 mb-4 flex items-center gap-2"><i class="fas fa-book"></i> About Me (Multiple Paragraphs - separate with new line)</h2>
+          <textarea id="about" class="form-textarea" rows="6" placeholder="Write about the model... (each new line becomes a separate paragraph)"></textarea>
+        </div>
+
+        <!-- Services -->
+        <div class="form-section">
+          <h2 class="text-xl font-bold text-pink-400 mb-4 flex items-center gap-2"><i class="fas fa-concierge-bell"></i> Services (comma separated)</h2>
+          <input type="text" id="services" class="form-input" placeholder="e.g. Hotel Service, Home Service, Dinner Dates, Party Companion">
+        </div>
+
+        <!-- Generate Button -->
+        <button type="button" class="generate-btn" onclick="generateProfile()">
+          <i class="fas fa-download mr-2"></i>Generate & Download Profile
+        </button>
+      </form>
+
+      <!-- Preview -->
+      <div class="preview-section" id="previewSection" style="display: none;">
+        <h2 class="text-xl font-bold text-pink-400 mb-4 flex items-center gap-2"><i class="fas fa-eye"></i> Preview Generated Code</h2>
+        <textarea id="preview" class="form-textarea" rows="20"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function generateProfile() {
+      // Get form values
+      const name = document.getElementById('name').value;
+      const filename = document.getElementById('filename').value.toLowerCase().replace(/\s+/g, '-');
+      const city = document.getElementById('city').value;
+      const age = document.getElementById('age').value;
+      const height = document.getElementById('height').value || '5\'5"';
+      const weight = document.getElementById('weight').value || '52 kg';
+      const category = document.getElementById('category').value;
+      const languages = document.getElementById('languages').value || 'Hindi, English';
+      const isAvailable = document.getElementById('isAvailable').checked;
+      const isHot = document.getElementById('isHot').checked;
+      const isNew = document.getElementById('isNew').checked;
+      const isVIP = document.getElementById('isVIP').checked;
+      const price1 = document.getElementById('price1').value || '5000';
+      const price2 = document.getElementById('price2').value || '8000';
+      const priceNight = document.getElementById('priceNight').value || '20000';
+      const priceOvernight = document.getElementById('priceOvernight').value || '25000';
+      const aboutText = document.getElementById('about').value;
+      const servicesText = document.getElementById('services').value;
+
+      // Generate badges
+      let badges = '';
+      if (isHot) badges += '<span class="badge-hot text-white px-3 py-1 rounded-full text-sm font-bold">HOT</span>';
+      if (isNew) badges += '<span class="badge-new text-white px-3 py-1 rounded-full text-sm font-bold">NEW</span>';
+      if (isAvailable) badges += '<span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold flex items-center gap-1"><i class="fas fa-circle text-xs"></i> AVAILABLE NOW</span>';
+      let vipBadge = '';
+      if (isVIP) vipBadge = '<span class="badge-vip text-black px-3 py-1 rounded-full text-sm font-bold">VIP</span>';
+
+      // Generate about paragraphs
+      let aboutParagraphs = '';
+      if (aboutText) {
+        aboutParagraphs = aboutText.split('\n').filter(p => p.trim()).map(p => `<p>${p.trim()}</p>`).join('');
+      } else {
+        aboutParagraphs = `<p>Hello, gentlemen! My name is ${name}, and I'm a ${age}-year-old ${category.toLowerCase()} from ${city}. I'm very friendly, fun-loving, and always full of energy!</p><p>I absolutely love meeting new people and making them feel comfortable and happy.</p>`;
+      }
+
+      // Generate services
+      let servicesHTML = '';
+      if (servicesText) {
+        const services = servicesText.split(',').map(s => s.trim()).filter(s => s);
+        servicesHTML = services.map(service => `<div class="flex items-center gap-3 bg-[#0a0a0a] p-4 rounded-xl"><i class="fas fa-check-circle text-green-500 text-2xl"></i><span class="font-medium">${service}</span></div>`).join('');
+      } else {
+        servicesHTML = `<div class="flex items-center gap-3 bg-[#0a0a0a] p-4 rounded-xl"><i class="fas fa-check-circle text-green-500 text-2xl"></i><span class="font-medium">Hotel Service</span></div><div class="flex items-center gap-3 bg-[#0a0a0a] p-4 rounded-xl"><i class="fas fa-check-circle text-green-500 text-2xl"></i><span class="font-medium">Home Service</span></div><div class="flex items-center gap-3 bg-[#0a0a0a] p-4 rounded-xl"><i class="fas fa-check-circle text-green-500 text-2xl"></i><span class="font-medium">Dinner Dates</span></div><div class="flex items-center gap-3 bg-[#0a0a0a] p-4 rounded-xl"><i class="fas fa-check-circle text-green-500 text-2xl"></i><span class="font-medium">Party Companion</span></div>`;
+      }
+
+      // Generate the complete HTML
+      const profileHTML = `<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="${name} - ${category} in ${city} | VIP Call Girl Service">
+  <title>${name} - Profile | VIP Call Girl Service</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .marquee { overflow: hidden; white-space: nowrap; }
+    .marquee-content { display: inline-block; animation: marquee 20s linear infinite; }
+    @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+    .glow-pink { box-shadow: 0 0 20px rgba(255, 20, 147, 0.6); }
+    .badge-new { background: linear-gradient(135deg, #ff4444, #ff6666); }
+    .badge-hot { background: linear-gradient(135deg, #ff1493, #ff69b4); }
+    .badge-vip { background: linear-gradient(135deg, #d4af37, #ffd700); }
+    .gallery-img:hover { transform: scale(1.05); }
+  </style>
+</head>
+<body class="bg-[#0a0a0a] text-white">
+
+  <!-- Top Marquee Banner -->
+  <div class="bg-gradient-to-r from-pink-700 via-pink-600 to-pink-700 py-2">
+    <div class="marquee">
+      <div class="marquee-content text-white font-semibold">
+        🔥 100% Genuine Service 🔥 WhatsApp & Call Now 🔥 No Advance Payment 🔥 24x7 Available 🔥 Cash Payment 🔥 VIP Models 🔥 High Profile 🔥 College Girls 🔥 Housewife 🔥 Russian Models 🔥 
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 bg-[#111111] border-b-2 border-pink-600 shadow-xl">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between items-center py-3">
+        <div class="flex items-center gap-2">
+          <a href="../index.html" class="text-2xl font-bold">
+            <span class="text-pink-500">INDIA</span><span class="text-yellow-400">VIP</span>
+          </a>
+          <span class="text-xs bg-pink-600 px-2 py-1 rounded-full">No Advance</span>
+        </div>
+        
+        <div class="hidden md:flex items-center gap-6">
+          <a href="../index.html" class="text-gray-300 hover:text-pink-400 font-semibold flex items-center gap-1">
+            <i class="fas fa-home"></i> Home
+          </a>
+          <a href="../models.html" class="text-gray-300 hover:text-pink-400 font-semibold flex items-center gap-1">
+            <i class="fas fa-users"></i> Models
+          </a>
+          <a href="../cities.html" class="text-gray-300 hover:text-pink-400 font-semibold flex items-center gap-1">
+            <i class="fas fa-city"></i> Cities
+          </a>
+          <a href="../contact.html" class="text-gray-300 hover:text-pink-400 font-semibold flex items-center gap-1">
+            <i class="fas fa-phone"></i> Contact
+          </a>
+        </div>
+        
+        <div class="flex items-center gap-3">
+          <a href="https://wa.me/919876543210" target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition-all">
+            <i class="fab fa-whatsapp text-lg"></i> WhatsApp
+          </a>
+          <a href="tel:+919876543210" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition-all">
+            <i class="fas fa-phone"></i> Call Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <section class="py-4 px-4 bg-[#0f0f0f] border-b border-gray-800">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center gap-2 text-sm text-gray-400">
+        <a href="../index.html" class="hover:text-pink-400 transition-colors">Home</a>
+        <i class="fas fa-chevron-right text-xs"></i>
+        <a href="../models.html" class="hover:text-pink-400 transition-colors">Models</a>
+        <i class="fas fa-chevron-right text-xs"></i>
+        <span class="text-pink-400">${name}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profile Main -->
+  <section class="py-12 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Left - Gallery & Info -->
+        <div class="lg:col-span-2">
+          <!-- Main Profile Image -->
+          <div class="relative rounded-2xl overflow-hidden mb-8 border-4 border-pink-600">
+            <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=beautiful%20indian%20woman%20portrait%20realistic&image_size=landscape_16_9" alt="${name}" class="w-full h-[450px] object-cover">
+            <div class="absolute top-4 left-4 flex gap-2">
+              ${badges}
+            </div>
+            ${vipBadge ? `<div class="absolute top-4 right-4">${vipBadge}</div>` : ''}
+          </div>
+
+          <!-- Gallery -->
+          <div class="mb-8">
+            <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+              <i class="fas fa-images text-pink-500"></i> Gallery
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=beautiful%20indian%20girl%20portrait%201&image_size=square_hd" class="gallery-img rounded-xl border-2 border-pink-600 w-full h-48 object-cover transition-transform duration-300 cursor-pointer" alt="Gallery 1">
+              <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=beautiful%20indian%20girl%20portrait%202&image_size=square_hd" class="gallery-img rounded-xl border-2 border-pink-600 w-full h-48 object-cover transition-transform duration-300 cursor-pointer" alt="Gallery 2">
+              <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=beautiful%20indian%20girl%20portrait%203&image_size=square_hd" class="gallery-img rounded-xl border-2 border-pink-600 w-full h-48 object-cover transition-transform duration-300 cursor-pointer" alt="Gallery 3">
+              <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=beautiful%20indian%20girl%20portrait%204&image_size=square_hd" class="gallery-img rounded-xl border-2 border-pink-600 w-full h-48 object-cover transition-transform duration-300 cursor-pointer" alt="Gallery 4">
+            </div>
+          </div>
+
+          <!-- About -->
+          <div class="bg-[#111111] rounded-2xl p-8 border-2 border-pink-600/30 mb-8">
+            <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+              <i class="fas fa-user text-pink-500"></i> About Me
+            </h2>
+            <div class="space-y-4 text-gray-300">
+              ${aboutParagraphs}
+            </div>
+          </div>
+
+          <!-- Services -->
+          <div class="bg-[#111111] rounded-2xl p-8 border-2 border-pink-600/30 mb-8">
+            <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+              <i class="fas fa-concierge-bell text-pink-500"></i> Services I Provide
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4">
+              ${servicesHTML}
+            </div>
+          </div>
+        </div>
+
+        <!-- Right - Sidebar -->
+        <div class="lg:col-span-1">
+          <div class="bg-[#111111] rounded-2xl p-6 border-2 border-pink-600 sticky top-24">
+            <!-- Profile Name & Status -->
+            <div class="text-center mb-6 pb-6 border-b border-gray-700">
+              <h1 class="text-3xl font-bold text-pink-400 mb-2">${name}</h1>
+              <div class="flex items-center justify-center gap-2 mb-4">
+                <i class="fas fa-map-marker-alt text-pink-500"></i>
+                <span class="text-gray-300">${city}</span>
+              </div>
+              ${isAvailable ? `<div class="inline-flex items-center gap-2 bg-green-600/20 text-green-400 px-4 py-2 rounded-full"><i class="fas fa-circle text-xs animate-pulse"></i><span class="font-semibold">AVAILABLE NOW</span></div>` : ''}
+            </div>
+
+            <!-- Quick Info -->
+            <div class="space-y-4 mb-6 pb-6 border-b border-gray-700">
+              <div class="flex justify-between items-center py-2">
+                <span class="text-gray-400 flex items-center gap-2"><i class="fas fa-birthday-cake text-pink-500"></i> Age</span>
+                <span class="font-bold text-yellow-400 text-xl">${age} Years</span>
+              </div>
+              <div class="flex justify-between items-center py-2">
+                <span class="text-gray-400 flex items-center gap-2"><i class="fas fa-ruler-vertical text-pink-500"></i> Height</span>
+                <span class="font-bold text-yellow-400">${height}</span>
+              </div>
+              <div class="flex justify-between items-center py-2">
+                <span class="text-gray-400 flex items-center gap-2"><i class="fas fa-weight text-pink-500"></i> Weight</span>
+                <span class="font-bold text-yellow-400">${weight}</span>
+              </div>
+              <div class="flex justify-between items-center py-2">
+                <span class="text-gray-400 flex items-center gap-2"><i class="fas fa-language text-pink-500"></i> Language</span>
+                <span class="font-bold text-yellow-400">${languages}</span>
+              </div>
+              <div class="flex justify-between items-center py-2">
+                <span class="text-gray-400 flex items-center gap-2"><i class="fas fa-graduation-cap text-pink-500"></i> Category</span>
+                <span class="font-bold text-yellow-400">${category}</span>
+              </div>
+            </div>
+
+            <!-- Pricing -->
+            <div class="mb-6 pb-6 border-b border-gray-700">
+              <h3 class="text-lg font-bold mb-4 text-pink-400 flex items-center gap-2">
+                <i class="fas fa-tags"></i> Pricing
+              </h3>
+              <div class="space-y-3">
+                <div class="bg-[#0a0a0a] p-4 rounded-xl flex justify-between items-center">
+                  <span>1 Hour</span>
+                  <span class="text-yellow-400 font-bold text-xl">₹${price1}/-</span>
+                </div>
+                <div class="bg-[#0a0a0a] p-4 rounded-xl flex justify-between items-center">
+                  <span>2 Hours</span>
+                  <span class="text-yellow-400 font-bold text-xl">₹${price2}/-</span>
+                </div>
+                <div class="bg-gradient-to-r from-pink-600/30 to-pink-700/30 p-4 rounded-xl flex justify-between items-center border-2 border-pink-500">
+                  <span>Night (8hrs)</span>
+                  <span class="text-yellow-400 font-bold text-xl">₹${priceNight}/-</span>
+                </div>
+                <div class="bg-[#0a0a0a] p-4 rounded-xl flex justify-between items-center">
+                  <span>Overnight</span>
+                  <span class="text-yellow-400 font-bold text-xl">₹${priceOvernight}/-</span>
+                </div>
+              </div>
+              <p class="text-xs text-gray-500 mt-3 text-center">
+                ⚠️ No Advance Payment - Cash Only
+              </p>
+            </div>
+
+            <!-- Contact Buttons -->
+            <div class="space-y-3">
+              <a href="https://wa.me/919876543210" target="_blank" class="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all glow-pink">
+                <i class="fab fa-whatsapp text-2xl"></i> WhatsApp Now
+              </a>
+              <a href="tel:+919876543210" class="w-full bg-red-600 hover:bg-red-700 text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
+                <i class="fas fa-phone-volume text-2xl"></i> Call Now
+              </a>
+              <a href="../contact.html" class="w-full text-center text-pink-400 hover:text-pink-300 text-sm pt-3 border-t border-gray-700 transition-colors">
+                <i class="fas fa-envelope mr-2"></i> Contact via Email
+              </a>
+            </div>
+          </div>
+
+          <!-- Safety Badges -->
+          <div class="bg-[#111111] rounded-2xl p-6 border-2 border-pink-600/30 mt-6">
+            <h3 class="text-lg font-bold mb-4 text-pink-400 text-center">Why Book Me?</h3>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500 text-xl"></i><span class="text-sm">100% Genuine Photos</span></div>
+              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500 text-xl"></i><span class="text-sm">No Advance Payment</span></div>
+              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500 text-xl"></i><span class="text-sm">100% Safe & Secure</span></div>
+              <div class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500 text-xl"></i><span class="text-sm">Cash on Meeting</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- More Models -->
+  <section class="py-12 px-4 bg-[#0f0f0f]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold mb-2">
+          <span class="text-white">More</span> <span class="text-pink-500">Models</span>
+        </h2>
+        <p class="text-gray-400">Check out other beautiful models</p>
+      </div>
+      
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="priya.html" class="bg-[#111111] rounded-2xl overflow-hidden border-2 border-pink-600 hover:border-pink-400 transition-all">
+          <div class="relative">
+            <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=beautiful%20indian%20college%20girl%20portrait%20realistic&image_size=square_hd" class="w-full h-56 object-cover">
+            <div class="absolute top-3 left-3"><span class="badge-hot text-white px-2 py-1 rounded-full text-xs font-bold">HOT</span></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-pink-400">Priya Sharma</h3>
+            <p class="text-gray-400 text-sm"><i class="fas fa-map-marker-alt mr-1"></i> Delhi</p>
+            <p class="text-yellow-400 font-bold mt-2">₹5,000/-</p>
+          </div>
+        </a>
+        <a href="riya.html" class="bg-[#111111] rounded-2xl overflow-hidden border-2 border-pink-600 hover:border-pink-400 transition-all">
+          <div class="relative">
+            <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=elegant%20indian%20housewife%20portrait%20realistic&image_size=square_hd" class="w-full h-56 object-cover">
+            <div class="absolute top-3 left-3"><span class="badge-new text-white px-2 py-1 rounded-full text-xs font-bold">NEW</span></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-pink-400">Riya Kapoor</h3>
+            <p class="text-gray-400 text-sm"><i class="fas fa-map-marker-alt mr-1"></i> Mumbai</p>
+            <p class="text-yellow-400 font-bold mt-2">₹8,000/-</p>
+          </div>
+        </a>
+        <a href="anastasia.html" class="bg-[#111111] rounded-2xl overflow-hidden border-2 border-pink-600 hover:border-pink-400 transition-all">
+          <div class="relative">
+            <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=beautiful%20russian%20woman%20portrait%20blonde%20realistic&image_size=square_hd" class="w-full h-56 object-cover">
+            <div class="absolute top-3 left-3"><span class="badge-vip text-black px-2 py-1 rounded-full text-xs font-bold">VIP</span></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-pink-400">Anastasia</h3>
+            <p class="text-gray-400 text-sm"><i class="fas fa-map-marker-alt mr-1"></i> Bangalore</p>
+            <p class="text-yellow-400 font-bold mt-2">₹15,000/-</p>
+          </div>
+        </a>
+        <a href="neha.html" class="bg-[#111111] rounded-2xl overflow-hidden border-2 border-pink-600 hover:border-pink-400 transition-all">
+          <div class="relative">
+            <img src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=cute%20indian%20college%20student%20portrait%20smiling&image_size=square_hd" class="w-full h-56 object-cover">
+            <div class="absolute top-3 left-3"><span class="bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-bold">COLLEGE</span></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-pink-400">Neha Singh</h3>
+            <p class="text-gray-400 text-sm"><i class="fas fa-map-marker-alt mr-1"></i> Pune</p>
+            <p class="text-yellow-400 font-bold mt-2">₹3,500/-</p>
+          </div>
+        </a>
+      </div>
+      <div class="text-center mt-10">
+        <a href="../models.html" class="inline-flex items-center gap-2 bg-pink-600 hover:bg-pink-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all">
+          <i class="fas fa-arrow-right"></i> View All Models
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 px-4 bg-gradient-to-r from-pink-900 via-pink-800 to-pink-900">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Meet Me?</h2>
+      <p class="text-xl text-pink-200 mb-8">WhatsApp or Call me now. I'm waiting for you! ❤️</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://wa.me/919876543210" target="_blank" class="bg-green-600 hover:bg-green-700 text-white text-xl px-10 py-5 rounded-full font-bold flex items-center justify-center gap-2 transition-all glow-pink">
+          <i class="fab fa-whatsapp text-3xl"></i> WhatsApp Now
+        </a>
+        <a href="tel:+919876543210" class="bg-red-600 hover:bg-red-700 text-white text-xl px-10 py-5 rounded-full font-bold flex items-center justify-center gap-2 transition-all">
+          <i class="fas fa-phone-volume text-3xl"></i> +91 98765 43210
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#0a0a0a] border-t-2 border-pink-900 py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div class="md:col-span-2">
+          <h3 class="text-3xl font-bold mb-4"><span class="text-pink-500">INDIA</span><span class="text-yellow-400">VIP</span></h3>
+          <p class="text-gray-400 mb-6">The most trusted and reliable VIP call girl service in India. 100% genuine service with cash payment only. No advance required.</p>
+          <div class="flex gap-3">
+            <a href="https://wa.me/919876543210" target="_blank" class="w-12 h-12 rounded-full bg-green-600 hover:bg-green-700 flex items-center justify-center transition-all">
+              <i class="fab fa-whatsapp text-2xl text-white"></i>
+            </a>
+            <a href="tel:+919876543210" class="w-12 h-12 rounded-full bg-red-600 hover:bg-red-700 flex items-center justify-center transition-all">
+              <i class="fas fa-phone text-2xl text-white"></i>
+            </a>
+            <a href="https://t.me/username" target="_blank" class="w-12 h-12 rounded-full bg-blue-600 hover:bg-blue-700 flex items-center justify-center transition-all">
+              <i class="fab fa-telegram text-2xl text-white"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold mb-4 text-pink-400">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="../index.html" class="hover:text-pink-400 transition-colors">Home</a></li>
+            <li><a href="../models.html" class="hover:text-pink-400 transition-colors">Models</a></li>
+            <li><a href="../cities.html" class="hover:text-pink-400 transition-colors">Cities</a></li>
+            <li><a href="../contact.html" class="hover:text-pink-400 transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-bold mb-4 text-pink-400">Contact Info</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li class="flex items-center gap-2"><i class="fab fa-whatsapp text-green-500 text-xl"></i><span>+91 98765 43210</span></li>
+            <li class="flex items-center gap-2"><i class="fas fa-clock text-yellow-500 text-xl"></i><span>24x7 Available</span></li>
+            <li class="flex items-center gap-2"><i class="fas fa-money-bill text-pink-500 text-xl"></i><span>Cash Payment Only</span></li>
+            <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-pink-500 text-xl"></i><span>All India Service</span></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 pt-6 text-center text-gray-500 text-sm">
+        <p>⚠️ 18+ Only | This website is for entertainment purpose only</p>
+        <p class="mt-2">&copy; 2025 India VIP Escorts. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Fixed Bottom Buttons for Mobile -->
+  <div class="fixed bottom-0 left-0 right-0 bg-[#111111] border-t border-pink-600 p-3 md:hidden z-50">
+    <div class="flex gap-3">
+      <a href="tel:+919876543210" class="flex-1 bg-red-600 text-white py-3 rounded-xl font-bold text-center flex items-center justify-center gap-2">
+        <i class="fas fa-phone"></i> Call
+      </a>
+      <a href="https://wa.me/919876543210" target="_blank" class="flex-1 bg-green-600 text-white py-3 rounded-xl font-bold text-center flex items-center justify-center gap-2">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="h-20 md:hidden"></div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>`;
+
+      // Show preview
+      document.getElementById('previewSection').style.display = 'block';
+      document.getElementById('preview').value = profileHTML;
+
+      // Download file
+      const blob = new Blob([profileHTML], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${filename}.html`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
